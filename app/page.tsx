@@ -2,7 +2,9 @@
 import styles from "./page.module.css";
 import {useCallback, useEffect, useState} from "react";
 import {getCurrentTimeOffset} from "./utils/time";
+import localFont from "next/font/local";
 
+const clockFont = localFont({src: "../public/DigitalDismay.otf"});
 export default function Home() {
   const [timeOffset, setLatency] = useState({offset: 0, error: Infinity});
   const [time, setTime] = useState(new Date());
@@ -49,10 +51,13 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div suppressHydrationWarning className={styles.time}>
+        <div
+          suppressHydrationWarning
+          className={styles.time + " " + clockFont.className}
+        >
           {formatTime(time)}
         </div>
-        <div suppressHydrationWarning >
+        <div suppressHydrationWarning>
           Your clock is {Math.abs(timeOffset.offset).toPrecision(3)} (±
           {timeOffset.error.toPrecision(3)}) ms{" "}
           {timeOffset.offset < 0 ? "ahead" : "behind"}

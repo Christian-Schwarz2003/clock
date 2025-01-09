@@ -14,13 +14,8 @@
   height: 100svh;
   gap: 1rem;
 }
-@font-face {
-  font-family: ClockFont;
-  src: url("/DigitalDismay.otf");
-}
 .time {
   font-size: 5rem;
-font-family: "ClockFont";
 }
 
 .refresh {
